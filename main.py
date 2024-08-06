@@ -5,18 +5,6 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, Boolean
 
-'''
-Install the required packages first: 
-Open the Terminal in PyCharm (bottom left). 
-
-On Windows type:
-python -m pip install -r requirements.txt
-
-On MacOS type:
-pip3 install -r requirements.txt
-
-This will install the packages from requirements.txt for this project.
-'''
 
 app = Flask(__name__)
 
@@ -62,18 +50,7 @@ def random_cafe():
     all_cafes = db.session.execute(db.select(Cafe)).scalars().all()
     random_cafe = random.choice(all_cafes)
     return jsonify(random_cafe.to_dict())
-    # a longer way to do the above return, if we hadnt turned it into a dictionary first
-    # return jsonify(id = random_cafe.id,
-    #                name = random_cafe.name,
-    #                map_url = random_cafe.map_url,
-    #                img_url = random_cafe.img_url,
-    #                location = random_cafe.location,
-    #                seats = random_cafe.seats,
-    #                has_toilet = random_cafe.has_toilet,
-    #                has_wifi = random_cafe.has_wifi,
-    #                has_sockets = random_cafe.has_sockets,
-    #                can_take_calls = random_cafe.can_take_calls,
-    #                coffee_price = random_cafe.coffee_price)
+
 
 @app.route("/all")
 def all_shops():
